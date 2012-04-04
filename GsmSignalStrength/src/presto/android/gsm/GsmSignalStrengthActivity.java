@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.telephony.PhoneStateListener;
 import android.telephony.SignalStrength;
 import android.telephony.TelephonyManager;
+import android.util.Log;
 import android.widget.Toast;
 
 public class GsmSignalStrengthActivity extends Activity {
@@ -43,9 +44,11 @@ public class GsmSignalStrengthActivity extends Activity {
 		@Override
 		public void onSignalStrengthsChanged(SignalStrength sigStrength) {
 			super.onSignalStrengthsChanged(sigStrength);
+			int s = sigStrength.getGsmSignalStrength();
 			Toast.makeText(getApplicationContext(),
-				"Go to Firstdroid!!! GSM Cinr = " + String.valueOf(sigStrength.getGsmSignalStrength()),
+				"Go to Firstdroid!!! GSM Cinr = " + String.valueOf(s),
 				Toast.LENGTH_SHORT).show();
+			Log.i("SigStrength", String.valueOf(s));
 		}
 	}
 }
